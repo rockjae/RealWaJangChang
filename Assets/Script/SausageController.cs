@@ -13,6 +13,8 @@ public class SausageController : MonoBehaviour
     private float jumpforce = 10f;
     private float touchTimer;
 
+    private bool isJump;
+
     private void Awake()
     {
         Sausage = gameObject.transform;
@@ -28,15 +30,25 @@ public class SausageController : MonoBehaviour
             if(touchTimer < 0.5f)
             {
                 Sausage.eulerAngles = Sausage.eulerAngles.y == 0 ? new Vector3(0, 180, 0) : new Vector3(0, 0, 0);
-                touchTimer = 0;
             }
-            else
+            else if(!isJump)
             {
+                isJump = true;
                 SausageRig.AddForce(Vector3.up * jumpforce, ForceMode2D.Impulse);
-                touchTimer = 0;
             }
+            touchTimer = 0;
         }
 
         Sausage.position += Sausage.eulerAngles.y == 0 ? new Vector3(speed * Time.deltaTime, 0, 0) : new Vector3(-speed * Time.deltaTime, 0, 0);
+    }
+
+
+    private void OnCollisionEnter2D(Collision2D collision)
+    {
+        if (collision.gameObject.layer == LayerMask.NameToLayer("ground"))
+        {
+            Debug.Log("ground");
+            isJump = false;
+        }
     }
 }
