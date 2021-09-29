@@ -772,6 +772,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   Sausage: {fileID: 984391567}
+  setPos: {x: 0, y: 0, z: -10}
 --- !u!1 &1736802921
 GameObject:
   m_ObjectHideFlags: 0

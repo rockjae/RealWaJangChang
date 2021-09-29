@@ -5,11 +5,10 @@ using UnityEngine;
 public class FollowCamera : MonoBehaviour
 {
     public Transform Sausage;
+    public Vector3 setPos;
 
     private void Update()
     {
-        Vector3 tmp = Sausage.position;
-        tmp.z = -10;
-        this.transform.position = tmp;
+        this.transform.position = Sausage.position + setPos;
     }
 }
