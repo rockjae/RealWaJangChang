@@ -9,6 +9,7 @@ public class FollowCamera : MonoBehaviour
 
     private void Update()
     {
-        this.transform.position = Sausage.position + setPos;
+        //this.transform.position = Sausage.position + setPos;
+        this.transform.position = new Vector3(0f, Sausage.position.y, -10);
     }
 }
