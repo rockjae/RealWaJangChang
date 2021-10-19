@@ -1604,6 +1604,8 @@ MonoBehaviour:
   - {fileID: 542689154}
   - {fileID: 2088310502}
   blockGap: 1.5
+  blockMakeTerm: 0.1
+  blockCount: 50
 --- !u!4 &1380926014
 Transform:
   m_ObjectHideFlags: 0

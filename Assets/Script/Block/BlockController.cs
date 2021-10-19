@@ -8,9 +8,14 @@ public class BlockController : MonoBehaviour
 
     Vector3 targetPos; // 보스 위치
     Vector3 blockPositon;
+    int count = 0;
     [SerializeField]
     float blockGap;
-    
+    [SerializeField]
+    float blockMakeTerm;
+    [SerializeField]
+    int blockCount;
+
 
 
 
@@ -20,10 +25,10 @@ public class BlockController : MonoBehaviour
     void Start()
     {
         targetPos = GameObject.Find("boss").transform.position;
-        InvokeRepeating("MakeRandomBlock", 0f, 1f);
+        InvokeRepeating("MakeRandomBlock", 0f, blockMakeTerm);
         blockPositon.y = -4f;
     }
-
+/*
     void MakeLongBlock()
     {
         GameObject longBlock;
@@ -37,13 +42,15 @@ public class BlockController : MonoBehaviour
     void MakeWeakBlock()
     {
         GameObject weakBlock;
-    }
+    }*/
 
     void MakeMovingBlock()
     {
         GameObject movingBlock;
+        
 
-        blockPositon.y += blockGap; 
+        blockPositon.y += blockGap;
+
         if (blockPositon.y < targetPos.y)
         {
             movingBlock = Instantiate(blockPrefab[4], new Vector3(0f, blockPositon.y, 0f), Quaternion.identity);
@@ -58,8 +65,9 @@ public class BlockController : MonoBehaviour
         blockPositon.y += blockGap;
         float blokcPositionX = Random.Range(-2.0f, 2.0f);
         int blockIndex = Random.Range(0, blockPrefab.Length);
-        if (blockPositon.y < targetPos.y)
-        {
+        count++;
+        if (count <= blockCount)
+        {            
             randomBlock = Instantiate(blockPrefab[blockIndex], new Vector3(blokcPositionX, blockPositon.y, 0f), Quaternion.identity);
         }
 
