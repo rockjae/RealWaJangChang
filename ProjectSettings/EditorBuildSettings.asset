@@ -6,15 +6,39 @@ EditorBuildSettings:
   serializedVersion: 2
   m_Scenes:
   - enabled: 1
+    path: Assets/Scene/Tutorial.unity
+    guid: 11c4554b59444e548ae782e77d39e3a9
+  - enabled: 1
     path: Assets/Scene/Title.unity
     guid: dcc6eec25901fc94b821c40c523995dc
   - enabled: 1
+    path: Assets/Scene/Stage.unity
+    guid: 16dbcce2364466943a19e96dc5b3f3f5
+  - enabled: 1
     path: Assets/Scene/Main1.unity
-    guid: 7c23a446f238cd64c8bd818ee630fda6
+    guid: 917ed8d004b213f42901858b4ed767a8
   - enabled: 1
     path: Assets/Scene/Main2.unity
     guid: 2c06b0cf15ced5f4fb4759daedda2c76
   - enabled: 1
-    path: Assets/Scene/Stage.unity
-    guid: 16dbcce2364466943a19e96dc5b3f3f5
+    path: Assets/Scene/Main3.unity
+    guid: 7b6e6bca150f95e40b17e829bd20f9b8
+  - enabled: 1
+    path: Assets/Scene/Main4.unity
+    guid: fd15f88b43913f946bf37ed7f41da284
+  - enabled: 1
+    path: Assets/Scene/Main5.unity
+    guid: 2321638479528452486cf76fc46ffacd
+  - enabled: 1
+    path: Assets/Scene/Main6.unity
+    guid: 1d2544c19ac89c84aa486a7d9f2fc44d
+  - enabled: 1
+    path: Assets/Scene/FlappySausage.unity
+    guid: 24282f80918c57a4e80bb1efdb5c8167
+  - enabled: 1
+    path: Assets/Scene/ShootingSausage.unity
+    guid: ed1c6d46b5d54f34e8aabd9015924667
+  - enabled: 1
+    path: Assets/Scene/HighNoonSausage.unity
+    guid: ad1ef23f30dd8d14093c471cd6439f97
   m_configObjects: {}

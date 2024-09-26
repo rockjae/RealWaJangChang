@@ -3,7 +3,22 @@
 --- !u!78 &1
 TagManager:
   serializedVersion: 2
-  tags: []
+  tags:
+  - ground
+  - side
+  - ammo
+  - mwboss
+  - playerammo
+  - player
+  - flappyPipe
+  - reverseGround
+  - glueGround
+  - panboss
+  - fzboss
+  - stage5boss
+  - stage4ammo
+  - stage6boss
+  - playerboxammo
   layers:
   - Default
   - TransparentFX

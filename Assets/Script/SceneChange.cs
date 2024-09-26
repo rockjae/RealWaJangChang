@@ -5,6 +5,11 @@ using UnityEngine.SceneManagement;
 
 public class SceneChange : MonoBehaviour
 {
+    public void onClickTutorialScene()
+    {
+        DataManager.Instance.saveStageValue(DataManager.DataName.STAGE0_NAME, false);
+        SceneManager.LoadScene("Tutorial");
+    }
     public void onClickTitleScene()
     {
         SceneManager.LoadScene("Title");
@@ -17,5 +22,19 @@ public class SceneChange : MonoBehaviour
     public void onClickMainScene(int StgaeNum)
     {
         SceneManager.LoadScene("Main"+ StgaeNum);
+    }
+
+    public void onClickFlappySausage()
+    {
+        SceneManager.LoadScene("FlappySausage");
+    }
+
+    public void onClickShootingSausage()
+    {
+        SceneManager.LoadScene("ShootingSausage");
+    }
+    public void onClickHighNoonSausage()
+    {
+        SceneManager.LoadScene("HighNoonSausage");
     }
 }

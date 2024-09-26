@@ -5,62 +5,85 @@ using UnityEngine.UI;
 
 public class StageSceneManager : MonoBehaviour
 {
-    public const int MaxStage = 4; // 3스테이지까지 있다는 뜻
     public GameObject[] BtnOBJ;
+    public GameObject FlappySausageBtn;
+    public GameObject ShootingSausageBtn;
+    public GameObject HighNoonSausageBtn;
+    //public GameObject ShootingSausageBtn;
+    public bool TestMode;
 
     private void Start()
     {
-        StageOpenCheck();
+        if (!TestMode)
+        {
+            StageOpenCheck();
+        }
     }
 
     private void StageOpenCheck()
     {
-        for (int i = 0; i < MaxStage; i++)
+        if (DataManager.Instance.getFlappyGameOpen() != 1)
         {
-            if (LoadStageOpen(i + 1))
+            FlappySausageBtn.GetComponent<Button>().enabled = false;
+
+            Color tmp = FlappySausageBtn.GetComponent<Image>().color;
+            tmp.a *= 0.3f;
+            FlappySausageBtn.GetComponent<Image>().color = tmp;
+
+            Color tmpc = FlappySausageBtn.transform.GetChild(0).GetComponent<Image>().color;
+            tmpc.a *= 0.3f;
+            FlappySausageBtn.transform.GetChild(0).GetComponent<Image>().color = tmpc;
+        }
+        else
+        {
+            DataManager.Instance.saveStageValue(DataManager.DataName.STAGE3_NAME, true);//stage3 해금
+        }
+
+        if (DataManager.Instance.getShootingSausageGameOpen() != 1)
+        {
+            ShootingSausageBtn.GetComponent<Button>().enabled = false;
+
+            Color tmp = ShootingSausageBtn.GetComponent<Image>().color;
+            tmp.a *= 0.3f;
+            ShootingSausageBtn.GetComponent<Image>().color = tmp;
+
+            Color tmpc = ShootingSausageBtn.transform.GetChild(0).GetComponent<Image>().color;
+            tmpc.a *= 0.3f;
+            ShootingSausageBtn.transform.GetChild(0).GetComponent<Image>().color = tmpc;
+        }
+
+        if (DataManager.Instance.getHighNoonSausageGameOpen() != 1)
+        {
+            HighNoonSausageBtn.GetComponent<Button>().enabled = false;
+
+            Color tmp = HighNoonSausageBtn.GetComponent<Image>().color;
+            tmp.a *= 0.3f;
+            HighNoonSausageBtn.GetComponent<Image>().color = tmp;
+
+            Color tmpc = HighNoonSausageBtn.transform.GetChild(0).GetComponent<Image>().color;
+            tmpc.a *= 0.3f;
+            HighNoonSausageBtn.transform.GetChild(0).GetComponent<Image>().color = tmpc;
+        }
+
+        for (int i = 0; i < BtnOBJ.Length; i++)
+        {
+            if (!LoadStageOpen(i + 1))
             {
-                BtnOBJ[i].SetActive(true);
-            }
-            else
-            {
-                BtnOBJ[i].SetActive(false);
+                BtnOBJ[i].GetComponent<Button>().enabled = false;
+
+                Color tmp = BtnOBJ[i].GetComponent<Image>().color;
+                tmp.a *= 0.3f;
+                BtnOBJ[i].GetComponent<Image>().color = tmp;
+
+                Color tmpc = BtnOBJ[i].transform.GetChild(0).GetComponent<Image>().color;
+                tmpc.a *= 0.3f;
+                BtnOBJ[i].transform.GetChild(0).GetComponent<Image>().color = tmpc;
             }
         }
     }
 
     public bool LoadStageOpen(int stageNum) //어떤 스테이지가 열렸는지 가져오는 함수
     {
-        return PlayerPrefs.GetInt("Main"+stageNum) == 1 ? true:false;
-    }
-
-    public void SaveStageOpen(int stageNum)
-    {
-        if(stageNum > MaxStage)
-        {
-            Debug.Log("rockjae0 스테이지가 "+ stageNum+"스테이지 이상 구현 안됨");
-            return;
-        }
-        PlayerPrefs.SetInt("Main" + stageNum, 1); // 0이면 미해금 1이면 해금 ㅇㅇ
-    }
-
-    public void SaveStageDisOpen(int stageNum) // 테스트 용
-    {
-        if (stageNum > MaxStage)
-        {
-            Debug.Log("rockjae0 스테이지가 " + stageNum + "스테이지 이상 구현 안됨");
-            return;
-        }
-        PlayerPrefs.SetInt("Main" + stageNum, 0); // 0이면 미해금 1이면 해금 ㅇㅇ
-    }
-    public void SaveTestOff(int stage) // 테스트 용
-    {
-        SaveStageDisOpen(stage);
-        StageOpenCheck();
-    }
-
-    public void SaveTestOn(int stage) // 테스트 용
-    {
-        SaveStageOpen(stage);
-        StageOpenCheck();
+        return DataManager.Instance.loadStageValue("Main"+stageNum) == 1 ? true:false;
     }
 }

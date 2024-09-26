@@ -11,12 +11,9 @@ public class MovingBlock : MonoBehaviour
     float leftMax = -2.0f; //우로 이동가능한 (x)최대값
     float direction = 1.0f; //블럭 이동속도+방향
 
-    // Start is called before the first frame update
     void Start()
     {
         myPos = transform.position;
-        //targetPos = GameObject.Find("sausage").transform.position; 
-        //Destroy(gameObject, 20f); // 메모리 관리 어떻게 할까?
     }
 
     // Update is called once per frame
